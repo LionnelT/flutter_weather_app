@@ -9,6 +9,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.0.1
+  equatable: ^2.0.3
+  http: ^0.13.4
+  simple_circular_progress_bar: ^1.0.2
+  page_transition: ^2.0.9
+  intl: ^0.18.0
+  geolocator: ^9.0.2
 
 dev_dependencies:
   flutter_test:
