@@ -24,3 +24,11 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/images/forest_cloudy.png
+    - assets/images/forest_rainy.png
+    - assets/images/forest_sunny.png
+    - assets/Icons/clear.png
+    - assets/Icons/rain.png
+    - assets/Icons/partlysunny.png
