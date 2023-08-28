@@ -17,8 +17,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-  int selectedIndex = 0;  
+  int selectedIndex = 0;
 
   @override
   void initState() {
@@ -52,21 +51,21 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Colors.blueGrey,
         ),
         bottomNavigationBar: NavigationBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        destinations: destinations.map<NavigationDestination>((d) {
-          return NavigationDestination(
-            icon: Icon(d.icon),
-            label: d.label,
-          );
-        }).toList(),
-        selectedIndex: selectedIndex,
-        onDestinationSelected: (index) {
-          setState(() {
-            selectedIndex = index;
-          });
-        },
-      ),
+          elevation: 0,
+          backgroundColor: Colors.white,
+          destinations: destinations.map<NavigationDestination>((d) {
+            return NavigationDestination(
+              icon: Icon(d.icon),
+              label: d.label,
+            );
+          }).toList(),
+          selectedIndex: selectedIndex,
+          onDestinationSelected: (index) {
+            setState(() {
+              selectedIndex = index;
+            });
+          },
+        ),
         body: ListView(
           children: [
             BlocConsumer<CurrentWeatherBloc, CurrentWeatherState>(
@@ -81,11 +80,11 @@ class _HomePageState extends State<HomePage> {
               },
               builder: (context, state) {
                 if (state is CurrentWeatherLoadingState) {
-                  return Center(
+                  return const Center(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 80),
+                      padding: EdgeInsets.only(top: 80),
                       child: Column(
-                        children: const [
+                        children: [
                           SimpleCircularProgressBar(
                             progressColors: [
                               appColorRainy,
@@ -105,11 +104,11 @@ class _HomePageState extends State<HomePage> {
                 if (state is CurrentWeatherLoadedState) {
                   var weatherState =
                       state.current.weather!.map((e) => e.main).toString();
-                  print(weatherState);
+
                   return Stack(
                     children: [
                       weatherState.toString().toLowerCase().contains('clear')
-                          ? Container(
+                          ? SizedBox(
                               width: MediaQuery.of(context).size.width,
                               child: Image.asset(
                                 'assets/images/forest_sunny.png',
@@ -120,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                                   .toString()
                                   .toLowerCase()
                                   .contains('sunny')
-                              ? Container(
+                              ? SizedBox(
                                   width: MediaQuery.of(context).size.width,
                                   child: Image.asset(
                                     'assets/images/forest_sunny.png',
@@ -131,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                                       .toString()
                                       .toLowerCase()
                                       .contains('rain')
-                                  ? Container(
+                                  ? SizedBox(
                                       width: MediaQuery.of(context).size.width,
                                       child: Image.asset(
                                         'assets/images/forest_rainy.png',
@@ -142,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                                           .toString()
                                           .toLowerCase()
                                           .contains('clouds')
-                                      ? Container(
+                                      ? SizedBox(
                                           width:
                                               MediaQuery.of(context).size.width,
                                           child: Image.asset(
@@ -154,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                                               .toString()
                                               .toLowerCase()
                                               .contains('mist')
-                                          ? Container(
+                                          ? SizedBox(
                                               width: MediaQuery.of(context)
                                                   .size
                                                   .width,
@@ -163,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                                                 fit: BoxFit.fill,
                                               ),
                                             )
-                                          : Container(
+                                          : SizedBox(
                                               width: MediaQuery.of(context)
                                                   .size
                                                   .width,
