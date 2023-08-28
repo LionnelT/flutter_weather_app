@@ -13,18 +13,20 @@ class CurrentWeatherBloc
   CurrentWeatherBloc({required this.weatherRepository})
       : super(CurrentWeatherInitial()) {
     on<FetchCurrentWeatherEvent>((event, emit) async {
+       // Emit a loading state to indicate that data is being fetched
       emit(CurrentWeatherLoadingState());
       try {
         var data = await weatherRepository.getCurrentWeatherCondition(
             event.lat, event.lon);
-
+        // Print loaded data for debugging purposes
         // ignore: avoid_print
         print("***Loaded");
         // ignore: avoid_print
         print(data);
-
+        // Emit a loaded state with the fetched data
         emit(CurrentWeatherLoadedState(current: data));
       } catch (e) {
+        // Emit an error state if an exception occurs
         emit(CurrentWeatherErrorState(error: e.toString()));
       }
     });

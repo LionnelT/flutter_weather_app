@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// This class defines destinations for the bottom navbar in the app.
 class Destination {
   const Destination(this.icon, this.label);
   final IconData icon;

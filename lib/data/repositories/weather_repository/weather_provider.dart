@@ -4,7 +4,9 @@ import 'package:flutter_weather_app/res/app_constants.dart';
 import 'package:flutter_weather_app/res/app_urls.dart';
 import 'package:http/http.dart' as http;
 
+// This class is a WeatherProvider that fetches weather data from a remote source.
 class WeatherProvider {
+  // The getCurrentWeatherCondition method fetches the current weather condition for the given latitude and longitude.
   Future getCurrentWeatherCondition(double lat, double lon) async {
     // ignore: avoid_print
     print(
@@ -22,6 +24,7 @@ class WeatherProvider {
     return response.body;
   }
 
+// The getWeatherForecast method fetches the weather forecast for the given latitude and longitude.
   Future getWeatherForecast(double lat, double lon) async {
     // ignore: avoid_print
     print(

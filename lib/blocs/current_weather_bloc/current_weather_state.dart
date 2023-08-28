@@ -7,10 +7,14 @@ sealed class CurrentWeatherState extends Equatable {
   List<Object> get props => [];
 }
 
+// Represents the initial state when the CurrentWeatherBloc is first created
+
 final class CurrentWeatherInitial extends CurrentWeatherState {}
 
+// Represents the state when the CurrentWeatherBloc is loading data
 class CurrentWeatherLoadingState extends CurrentWeatherState {}
 
+// Represents the state when the CurrentWeatherBloc has successfully loaded the current weather data
 class CurrentWeatherLoadedState extends CurrentWeatherState {
   final CurrentWeatherModel current;
 
@@ -19,6 +23,8 @@ class CurrentWeatherLoadedState extends CurrentWeatherState {
   @override
   List<Object> get props => [current];
 }
+
+// Represents the state when an error occurs while loading or processing the current weather data
 
 class CurrentWeatherErrorState extends CurrentWeatherState {
   final String error;

@@ -1,3 +1,5 @@
+// This file contains the constants for the colors used in the app.
+
 import 'package:flutter/material.dart';
 
 const Color appColorSunny = Color(0XFF47AB2F);

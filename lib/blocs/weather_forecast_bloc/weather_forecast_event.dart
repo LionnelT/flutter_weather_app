@@ -1,5 +1,6 @@
 part of 'weather_forecast_bloc.dart';
 
+// Represents the base class for all weather forecast events
 sealed class WeatherForecastEvent extends Equatable {
   const WeatherForecastEvent();
 
@@ -7,6 +8,7 @@ sealed class WeatherForecastEvent extends Equatable {
   List<Object> get props => [];
 }
 
+// Represents an event to fetch the weather forecast data
 class FetchWeatherForecastEvent extends WeatherForecastEvent {
   final double lat;
   final double lon;

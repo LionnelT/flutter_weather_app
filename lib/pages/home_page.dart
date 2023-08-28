@@ -26,18 +26,26 @@ class _HomePageState extends State<HomePage> {
   }
 
   _callBlocs() async {
+    // This method fetches the current weather and forecast.
+
+    // The LocationPermission.checkPermission() method checks if the user has granted permission to access their location.
     LocationPermission permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
     }
 
+    // The Geolocator.getCurrentPosition() method gets the current position of the device.
     Position? position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
 
+    // The following method adds an event to the CurrentWeatherBloc.
+    // The event tells the bloc to fetch the current weather for the given latitude and longitude.
     BlocProvider.of<CurrentWeatherBloc>(context).add(
       FetchCurrentWeatherEvent(lat: position.latitude, lon: position.longitude),
     );
 
+    // The following method adds an event to the WeatherForecastBloc.
+    // The event tells the bloc to fetch the weather forecast for the given latitude and longitude.
     BlocProvider.of<WeatherForecastBloc>(context).add(
       FetchWeatherForecastEvent(
           lat: position.latitude, lon: position.longitude),
@@ -322,6 +330,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+// This method builds the weather forecast UI
 Widget _buildForecast(ForecastModel forecast) {
   return SizedBox(
     height: 400,
